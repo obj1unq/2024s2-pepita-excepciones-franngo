@@ -1,5 +1,22 @@
 import pepita.*
 
+describe "tests de cosas anteriores" {
+    
+    test "pepon" {
+        pepon.comer(alpiste)
+        assert.equals(40, pepon.energia())
+    }
+
+    test "pepon puede volar 5" {
+        assert.doesNotThrowException({pepon.volar(5)})
+    }
+
+    test "pepon no puede volar 50" {
+        assert.throwsException({pepon.volar(50)})
+    }
+
+}
+
 describe "milena y las movilizaciones" {
 
     method initialize() {
