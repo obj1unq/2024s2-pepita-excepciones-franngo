@@ -12,6 +12,10 @@ object pepita { //prueba
 	method energia() {
 		return energia
 	}
+
+	method puedeVolar(distancia) {
+		return energia >= (10 + distancia) //(si su energía actual es suficiente para volar "distancia" kilómetros)
+	}
 }
 
 object alpiste {
@@ -56,6 +60,10 @@ object pepon {
 	method volar(distancia) {
 		energia = energia - 20 - 2*distancia
 	}
+
+	method puedeVolar(distancia) {
+		return energia >= (20 + distancia * 2) //(si su energía actual es suficiente para volar "distancia" kilómetros)
+	}
 	
 }
 
@@ -72,5 +80,30 @@ object roque {
 		ave.comer(alimento)
 		cenas = cenas + 1
 	}
+}
+
+object milena {
+	const aves = #{}
+
+	method agregarAve(ave) {
+		aves.add(ave)
+	}
+
+	method sacarAve(ave) {
+		aves.remove(ave)
+	}
+
+	method movilizar(distancia) {
+		if (self.todasPuedenVolar(distancia)) {
+			aves.forEach({ave => ave.volar(distancia)})
+		} else {
+			self.error("La totalidad de aves de Milena no es capaz de volar " + distancia + " kilómetros")
+		}
+	}
+
+	method todasPuedenVolar(distancia) {
+		return aves.all({ave => ave.puedeVolar(distancia)})
+	}
+
 }
 
