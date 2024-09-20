@@ -1,0 +1,45 @@
+import pepita.*
+
+describe "tests de cosas anteriores" {
+    
+    test "pepon" {
+        pepon.comer(alpiste)
+        assert.equals(40, pepon.energia())
+    }
+
+    test "pepon puede volar 5" {
+        assert.doesNotThrowException({pepon.volar(5)})
+    }
+
+    test "pepon no puede volar 50" {
+        assert.throwsException({pepon.volar(50)})
+    }
+
+}
+
+describe "milena y las movilizaciones" {
+
+    method initialize() {
+        milena.agregarAve(pepita)
+        milena.agregarAve(pepon)
+    }
+
+    test "se puede dar una movilizacion de 4km" {
+        assert.doesNotThrowException({milena.movilizar(4)})
+        assert.equals(86, pepita.energia())
+        assert.equals(2, pepon.energia())
+    }
+
+    test "no se puede dar una movilizacion de 6km" {
+        assert.throwsException({milena.movilizar(6)})
+        assert.equals(100, pepita.energia())
+        assert.equals(30, pepon.energia())
+    }
+
+    test "no se puede dar una movilizacion de 100km" {
+        assert.throwsException({milena.movilizar(100)})
+        assert.equals(100, pepita.energia())
+        assert.equals(30, pepon.energia())
+    }
+    
+}
