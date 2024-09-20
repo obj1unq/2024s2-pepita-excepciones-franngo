@@ -8,7 +8,9 @@ object pepita { //prueba
 	method energia() {
 		return energia
 	}
-	
+
+	//en vez de ejecutar código si se cumple x y sino tirar error, se hace validación (preguntar si NO se cumple x y, en ese caso,
+	//tirar error) y después se ejecuta el código
 	method volar(distancia) {
 		self.validarPuedeVolar(distancia)
 		energia = energia - 10 - distancia
@@ -104,7 +106,7 @@ object milena {
 	}
 
 	method sacarAve(ave) {
-		aves.remove(ave)
+		aves.remove(ave) //acá también podrías agregar un validar antes del remove, ya que si hacés remove si no está el ave daría error
 	}
 
 	method movilizar(distancia) {
